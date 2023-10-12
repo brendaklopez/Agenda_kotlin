@@ -32,6 +32,7 @@ class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1)
             db.close()
         }
         return response
-
+        fun listAgendaAll(Context)
     }
+
 }
