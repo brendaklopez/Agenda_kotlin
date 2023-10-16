@@ -16,10 +16,10 @@
             android:name=".NuevoContacto"
             android:exported="false" />
         <activity
-            android:name=".NewActivity"
-            android:exported="false"
-            android:label="@string/title_activity_new"
-            android:theme="@style/Theme.MyApplication" />
+            android:name=".listAgenda"
+            android:exported="false" />
+        <activity android:name=".item"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

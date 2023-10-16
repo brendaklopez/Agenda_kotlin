@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import org.intellij.lang.annotations.JdkConstants.TitledBorderTitlePosition
 
 class adapterLista : BaseAdapter {
     var context: Context? = null
@@ -29,9 +28,9 @@ class adapterLista : BaseAdapter {
         return position.toLong()
     }
 
-    override fun getView(position: Int, view: View?, viewGroup: ViewGroup? ) {
+    override fun getView(position: Int, view: View?, viewGroup: ViewGroup? ):View {
         var inflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        var row= inflater.inflate(R.layout.lista_contactos,null)
+        var row = inflater.inflate(R.layout.fila_contactos,null)
         var nombre = row.findViewById<TextView>(R.id.ListNombres)
         var apellido = row.findViewById<TextView>(R.id.listApellidos)
         var telefono = row.findViewById<TextView>(R.id.ListTelefonos)

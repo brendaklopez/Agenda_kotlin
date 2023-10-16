@@ -32,7 +32,16 @@ class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1)
             db.close()
         }
         return response
-        fun listAgendaAll(Context)
     }
-
+    fun listAgendaAll(context: Context): ArrayList<PersonaClass>{
+        var arrayList = ArrayList<PersonaClass>()
+        var SQL:String = "SELECT * FROM Personas order by nombre"
+        var SQLmanager= SQLmanager(context)
+        var db = SQLmanager.readableDatabase
+        var data = db.rawQuery(SQL, null)
+        while(data.moveToNext()){
+            arrayList.add(PersonaClass(data.getString(0), data.getString(1), data.getString(2)))
+        }
+        return arrayList
+    }
 }

@@ -10,9 +10,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     var agregarContacto: Button =findViewById(R.id.btnContactoNuevo)
-    var intent = Intent(this,NuevoContacto::class.java)
+    var listaContactos: Button = findViewById(R.id.btnListaContactos)
+
+        val intent = Intent(this,NuevoContacto::class.java)
         agregarContacto.setOnClickListener{
             startActivity(intent)
+        }
+
+        val intentLista = Intent(this,listAgenda::class.java )
+        listaContactos.setOnClickListener{
+            startActivity(intentLista)
         }
     }
 

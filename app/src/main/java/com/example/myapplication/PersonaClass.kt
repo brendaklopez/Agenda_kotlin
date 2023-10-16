@@ -1,5 +1,7 @@
 package com.example.myapplication
 
+import android.os.Parcel
+import android.os.Parcelable
 class PersonaClass {
     var telefono: String =""
     var nombre:String=""
