@@ -28,6 +28,7 @@ class listAgenda:AppCompatActivity() {
 
         var listaView: ListView = findViewById(R.id.lista)
         var btnGuardar: ImageButton = findViewById(R.id.guardarDatos)
+        var btnEliminar: ImageButton = findViewById(R.id.btnBorrarContacto)
 
         var sqLmanager = SQLmanager(this)
         var arrayList = sqLmanager.listAgendaAll(this)
@@ -51,15 +52,48 @@ class listAgenda:AppCompatActivity() {
             if (nombre.isNotEmpty() && apellido.isNotEmpty() && telefono.isNotEmpty()) {
                 val sqLmanager = SQLmanager(this)
                 val persona = PersonaClass(telefono, nombre, apellido)
-
                 val response = sqLmanager.updateAgenda(this, persona, telefono)
+
                 if (response) {
+                    arrayList.clear()
+                    arrayList.addAll(sqLmanager.listAgendaAll(this))
+                    adapterLista.notifyDataSetChanged()
+
+                    editTxtApellido.setText("")
+                    editTxtNombre.setText("")
+                    editTxtNum.setText("")
+
                     Toast.makeText(this, "Datos actualizados con éxito", Toast.LENGTH_SHORT).show()
+
                 } else {
                     Toast.makeText(this, "Todos los datos son obligatorios", Toast.LENGTH_SHORT)
                         .show()
                 }
             }
         }
-    }}
+
+        btnEliminar.setOnClickListener {
+            val telefono = editTxtNum.text.toString()
+            if (telefono.isNotEmpty()) {
+                val sqLmanager = SQLmanager(this)
+                val response = sqLmanager.deleteAgenda(this, telefono)
+
+                if (response) {
+
+                    arrayList.clear()
+                    arrayList.addAll(sqLmanager.listAgendaAll(this))
+                    adapterLista.notifyDataSetChanged()
+
+                    editTxtApellido.setText("")
+                    editTxtNombre.setText("")
+                    editTxtNum.setText("")
+
+                    Toast.makeText(this, "Datos eliminados correctamente", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+
+        }
+    }
+}
 

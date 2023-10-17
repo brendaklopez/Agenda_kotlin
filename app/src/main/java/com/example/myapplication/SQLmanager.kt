@@ -79,5 +79,18 @@ class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1)
 
             return response
         }
+    fun deleteAgenda(context: Context, telefono: String):Boolean{
+        val db = this.writableDatabase
+        val whereClause = "telefono = ?"
+        val whereArgs = arrayOf(telefono)
 
+        return try {
+            db.delete("personas", whereClause, whereArgs) > 0
+        } catch (e: Exception) {
+            e.printStackTrace()
+            false
+        } finally {
+            db.close()
+        }
+    }
 }
