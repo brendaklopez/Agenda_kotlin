@@ -1,6 +1,5 @@
 package com.example.myapplication
 
-import PersonaClass
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,8 +30,10 @@ class NuevoContacto : AppCompatActivity() {
         guardarNuevo.setOnClickListener {
             if (testDat()){
 
-                var datos= PersonaClass(telefono=tel.toString(), nombre= nombre.text.toString(),
-                        apellido=apellido.text.toString())
+                var datos= PersonaClass(
+                    telefono = tel.text.toString(),
+                    nombre = nombre.text.toString(),
+                    apellido = apellido.text.toString())
                 var sqLmanager = SQLmanager(this)
                 var response = sqLmanager.addPersona(this,datos)
                 if (response){
