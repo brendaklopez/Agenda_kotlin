@@ -23,8 +23,10 @@ class NuevoContacto : AppCompatActivity() {
         apellido=findViewById(R.id.txtApellidoNuevo)
         tel=findViewById(R.id.txtTelNuevo)
 
-            val intentVolver = Intent(this, MainActivity::class.java)
-            volver.setOnClickListener{
+        var intentVolver = Intent(this, MainActivity::class.java)
+        var intentLista = Intent(this, listAgenda::class.java)
+
+        volver.setOnClickListener{
                 startActivity(intentVolver)
              }
         guardarNuevo.setOnClickListener {
@@ -37,9 +39,9 @@ class NuevoContacto : AppCompatActivity() {
                 var sqLmanager = SQLmanager(this)
                 var response = sqLmanager.addPersona(this,datos)
                 if (response){
+                    startActivity(intentLista)
                     Toast.makeText(this,"datos ingresados con exito", Toast.LENGTH_SHORT).show()
                 }
-
             }
             else{
                 Toast.makeText(this,"Todos los datos son obligatorios", Toast.LENGTH_SHORT).show()

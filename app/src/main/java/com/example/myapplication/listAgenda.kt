@@ -1,16 +1,12 @@
 package com.example.myapplication
 
 import android.content.Intent
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.selects.select
 
 class listAgenda:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +25,8 @@ class listAgenda:AppCompatActivity() {
         var listaView: ListView = findViewById(R.id.lista)
         var btnGuardar: ImageButton = findViewById(R.id.guardarDatos)
         var btnEliminar: ImageButton = findViewById(R.id.btnBorrarContacto)
+        var btnAgregar: ImageButton = findViewById(R.id.btnAgregarLista)
+        var intent = Intent(this, NuevoContacto::class.java )
 
         var sqLmanager = SQLmanager(this)
         var arrayList = sqLmanager.listAgendaAll(this)
@@ -93,6 +91,9 @@ class listAgenda:AppCompatActivity() {
                 }
             }
 
+        }
+        btnAgregar.setOnClickListener{
+            startActivity(intent)
         }
     }
 }
