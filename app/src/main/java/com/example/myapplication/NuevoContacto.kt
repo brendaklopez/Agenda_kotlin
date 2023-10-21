@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
+
 
 class NuevoContacto : AppCompatActivity() {
     lateinit var nombre: EditText
@@ -18,6 +20,7 @@ class NuevoContacto : AppCompatActivity() {
 
         var guardarNuevo: ImageButton =findViewById(R.id.btnAgregarNuevo)
         var volver: ImageButton = findViewById(R.id.btnVolver)
+        var toolbar: Toolbar= findViewById(R.id.toolbar)
 
         nombre = findViewById(R.id.txtNombreNuevo)
         apellido=findViewById(R.id.txtApellidoNuevo)
@@ -26,6 +29,7 @@ class NuevoContacto : AppCompatActivity() {
         var intentVolver = Intent(this, MainActivity::class.java)
         var intentLista = Intent(this, listAgenda::class.java)
 
+        setSupportActionBar(toolbar)
         volver.setOnClickListener{
                 startActivity(intentVolver)
              }
