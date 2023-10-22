@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 
 class listAgenda:AppCompatActivity() {
@@ -26,13 +27,24 @@ class listAgenda:AppCompatActivity() {
         var btnGuardar: ImageButton = findViewById(R.id.guardarDatos)
         var btnEliminar: ImageButton = findViewById(R.id.btnBorrarContacto)
         var btnAgregar: ImageButton = findViewById(R.id.btnAgregarLista)
+        var btnVolver: ImageButton = findViewById(R.id.btnVolver)
+        var toolbar : Toolbar = findViewById(R.id.toolbar)
+
         var intent = Intent(this, NuevoContacto::class.java )
+        var intentVolver = Intent(this, MainActivity::class.java)
+
 
         var sqLmanager = SQLmanager(this)
         var arrayList = sqLmanager.listAgendaAll(this)
         var adapterLista = adapterLista(this, arrayList)
 
+
         listaView.adapter = adapterLista
+
+        btnVolver.setImageResource(R.drawable.home)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = "Mis contactos"
 
         listaView.setOnItemClickListener { parent, view, position, id ->
             val selectedItem: PersonaClass = arrayList[position]
@@ -40,6 +52,10 @@ class listAgenda:AppCompatActivity() {
             editTxtNum.setText(selectedItem.telefono)
             editTxtApellido.setText(selectedItem.apellido)
 
+        }
+
+        btnVolver.setOnClickListener{
+            startActivity(intentVolver)
         }
 
         btnGuardar.setOnClickListener {

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 
 class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL("CREATE TABLE personas (telefono VARCHAR(10)PRIMARY KEY, nombre VARCHAR(100), apellido(100))")
+        db!!.execSQL("CREATE TABLE personas (telefono VARCHAR(10) PRIMARY KEY, nombre VARCHAR(100), apellido VARCHAR(100))")
     }
 
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
@@ -55,8 +55,24 @@ class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1)
             }
             return arrayList
         }
+        fun countTotalContacts(context: Context): Int {
+            var count = 0
+            var SQL: String = "SELECT COUNT(*) FROM Personas"
+            var SQLmanager = SQLmanager(context)
+            var db = SQLmanager.readableDatabase
+            var cursor = db.rawQuery(SQL, null)
 
-        fun updateAgenda(context: Context, datos: PersonaClass, telAnterior: String): Boolean {
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0)
+            }
+
+            cursor.close()
+            db.close()
+            return count
+        }
+
+
+    fun updateAgenda(context: Context, datos: PersonaClass, telAnterior: String): Boolean {
             var response = true
             var sqlManager = SQLmanager(context)
             var db = sqlManager.writableDatabase

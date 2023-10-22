@@ -5,5 +5,7 @@
     <color name="celeste">#00BFFF</color>
     <color name="gris_oscuro">#333333</color>
     <color name="gris_claro">#CCCCCC</color>
+    <color name="celeste_oscuro">#00796B</color>
+
 
 </resources>

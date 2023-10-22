@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-
-
-    <item name="colorPrimaryDark">@color/gris_claro</item>
+    <item name="android:textColor">@color/gris_oscuro</item>
+    <item name="colorPrimaryDark">@color/gris_oscuro</item>
+    <item name="toolbarStyle">@style/ToolbarStyle</item>
 </style>
+
+    <style name="TextoBlanco">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:titleTextStyle">@style/TextoBlanco</item>
+    </style>
 
 </resources>

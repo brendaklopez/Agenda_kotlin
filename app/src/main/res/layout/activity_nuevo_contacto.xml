@@ -1,11 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NuevoContacto">
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -20,21 +18,19 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/celeste"
             app:contentInsetStartWithNavigation="16dp"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            tools:visibility="visible">
+
+            <Space
+                android:layout_width="200dp"
+                android:layout_height="match_parent" />
 
             <ImageButton
                 android:id="@+id/btnVolver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:src="?attr/actionModeCloseDrawable" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nuevo contacto"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+                android:background="#03FFFFFF"
+                tools:src="@drawable/home" />
 
 
         </androidx.appcompat.widget.Toolbar>
@@ -42,29 +38,30 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="127dp"
-        tools:layout_editor_absoluteY="30dp"
-        tools:srcCompat="@tools:sample/avatars"
+        android:layout_width="134dp"
+        android:layout_height="152dp"
+        android:layout_marginTop="28dp"
+        android:background="#97FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        tools:srcCompat="@drawable/person_line"
+        tools:visibility="visible" />
 
-        <EditText
-            android:id="@+id/txtApellidoNuevo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="Apellido"
-            android:inputType="text"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            />
 
+    <EditText
+        android:id="@+id/txtApellidoNuevo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:hint="Apellido"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreNuevo" />
 
     <EditText
         android:id="@+id/txtNombreNuevo"
@@ -77,35 +74,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtApellidoNuevo" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/txtTelNuevo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Telefono"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreNuevo" />
+        app:layout_constraintTop_toBottomOf="@+id/txtApellidoNuevo" />
 
     <ImageButton
         android:id="@+id/btnAgregarNuevo"
         android:layout_width="132dp"
         android:layout_height="54dp"
-        android:src="@android:drawable/ic_input_add"
+        android:background="@color/gris_claro"
+        android:src="@drawable/guardar_line"
         android:text="Agregar Contacto"
         app:layout_constraintBottom_toBottomOf="parent"
-
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTelNuevo"
-        app:layout_constraintVertical_bias="0.941" />
-
+        app:layout_constraintVertical_bias="0.67" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
