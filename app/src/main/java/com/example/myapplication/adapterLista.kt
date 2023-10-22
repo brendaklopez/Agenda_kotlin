@@ -34,9 +34,11 @@ class adapterLista : BaseAdapter {
         var nombre = row.findViewById<TextView>(R.id.ListNombres)
         var apellido = row.findViewById<TextView>(R.id.listApellidos)
         var telefono = row.findViewById<TextView>(R.id.ListTelefonos)
+
         nombre.text = arrayList[position].nombre
         apellido.text = arrayList[position].apellido
         telefono.text = arrayList[position].telefono
+
         return row
     }
 

@@ -5,7 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1) {
+class SQLmanager(private val context: Context):SQLiteOpenHelper(context,"agenda.db", null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         db!!.execSQL("CREATE TABLE personas (telefono VARCHAR(10) PRIMARY KEY, nombre VARCHAR(100), apellido VARCHAR(100))")
     }
@@ -55,7 +55,7 @@ class SQLmanager(context: Context):SQLiteOpenHelper(context,"agenda.db", null,1)
             }
             return arrayList
         }
-        fun countTotalContacts(context: Context): Int {
+        fun countTotalContacts(): Int {
             var count = 0
             var SQL: String = "SELECT COUNT(*) FROM Personas"
             var SQLmanager = SQLmanager(context)
